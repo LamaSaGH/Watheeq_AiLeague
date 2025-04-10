@@ -5,7 +5,7 @@ This project evaluates the performance of the **ArcFace** face recognition model
 1. **Data Preparation**
   - The dataset is based on [Labeled Faces in the Wild (LFW)](https://www.kaggle.com/datasets/jessicali9530/lfw-dataset)
 2. **Image Selection**
-  - For each person, the script selects **up to 5 images** (to limit the total number of comparisons).
+  - For each person, the code selects **up to 5 images** (to limit the total number of comparisons).
 3. **Model Loading**
   - The **ArcFace model** (`buffalo_l`) is automatically loaded using the [InsightFace](https://github.com/deepinsight/insightface) library.
 4. **Face Embedding Extraction**
