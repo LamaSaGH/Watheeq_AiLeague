@@ -1,22 +1,52 @@
 # ArcFace Face Verification Evaluation
-This project evaluates the performance of the **ArcFace** face recognition model on verifying whether two face images belong to the same person.
 
-## How It Works 
-1. **Data Preparation**
-  - The dataset is based on [Labeled Faces in the Wild (LFW)](https://www.kaggle.com/datasets/jessicali9530/lfw-dataset)
-2. **Image Selection**
-  - For each person, the code selects **up to 5 images** (to limit the total number of comparisons).
-3. **Model Loading**
-  - The **ArcFace model** (`buffalo_l`) is automatically loaded using the [InsightFace](https://github.com/deepinsight/insightface) library.
-4. **Face Embedding Extraction**
-  - Each image is passed to the ArcFace model.
-5. **Similarity Comparison**
-  - Each image pair’s embeddings are compared using **cosine similarity**.
-  - If the similarity score is higher than a chosen threshold (default: `0.6`), the pair is classified as a **Match** (same person). Otherwise, it is considered **No Match**.
-6. **Result Reporting**
-  - For each pair, the system prints the similarity score and the result.
-  - After evaluating all pairs, a summary is displayed:
-    - Total number of evaluated pairs
-    - Number of correct matches
-    - Number of false negatives (missed matches)
-    - Overall accuracy
+This project evaluates the performance of the **ArcFace** deep face recognition model on verifying whether two images belong to the same person. The evaluation was conducted using a subset of the **LFW (Labeled Faces in the Wild)** dataset.
+
+
+
+---
+
+## 📁 Dataset
+
+- **Source**: LFW DeepFunneled
+- **Selection Criteria**:
+  - For *same-person* testing: individuals with at least two clear images were selected.
+  - For *different-person* testing: individuals with only one image were paired sequentially with others.
+- **Total evaluated pairs**: `1049`
+  - Same-person pairs: `420`
+  - Different-person pairs: `629`
+
+---
+
+## ⚙️ How It Works
+
+### 1. **Model**
+- ArcFace (`buffalo_l`) loaded via `insightface` library.
+
+### 2. **Embedding Extraction**
+- For each image:
+  - Load and detect face using ArcFace.
+  - Extract 512-dimension embedding (if a face is detected).
+
+
+
+- Threshold: `0.6`
+  - Similarity > 0.6 → Match
+  - Otherwise → No Match
+
+### 4. **Evaluation Logic**
+- Same-person pairs: compare first 2 images of a person.
+- Different-person pairs: match between two people with only 1 image each.
+
+### 5. **Metrics**
+- Confusion matrix
+- Classification report (precision, recall, f1-score, accuracy)
+
+---
+
+## ✅ Results
+
+- **Correct matches**: `1045` / `1049`
+- **Accuracy**: `99.52%`
+
+
