@@ -1,6 +1,6 @@
 # ArcFace Face Verification Evaluation
 
-This project evaluates the performance of the **ArcFace** deep face recognition model on verifying whether two images belong to the same person. The evaluation was conducted using a subset of the **LFW (Labeled Faces in the Wild)** dataset.
+We evaluates the performance of the **ArcFace** deep face recognition model on verifying whether two images belong to the same person. The evaluation was conducted using a subset of the **LFW (Labeled Faces in the Wild)** dataset.
 
 
 
